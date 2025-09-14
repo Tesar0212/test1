@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Raketa\BackendTestTask\Contexts\ShoppingCartContext\Infrastructure\Logger;
+namespace Raketa\BackendTestTask\Contexts\ProductCatalogContext\Infrastructure\Logger;
 
 class Logger implements LoggerInterface
 {

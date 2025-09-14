@@ -4,9 +4,6 @@ declare(strict_types=1);
 
 namespace Raketa\BackendTestTask\Contexts\ProductCatalogContext\Application\Queries\Result;
 
-use Raketa\BackendTestTask\Repository\Entity\Product;
-use Raketa\BackendTestTask\Repository\ProductRepository;
-
 readonly class ProductsView
 {
     public function __construct(

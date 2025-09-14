@@ -8,7 +8,7 @@ use Raketa\BackendTestTask\Contexts\ShoppingCartContext\Domain\Aggregates\Cart;
 use Raketa\BackendTestTask\Contexts\ShoppingCartContext\Domain\Exceptions\InvalidCartItemException;
 use Raketa\BackendTestTask\Contexts\ShoppingCartContext\Domain\Exceptions\InvalidUuidException;
 use Raketa\BackendTestTask\Contexts\ShoppingCartContext\Domain\Exceptions\NegativeQuantityException;
-use Raketa\BackendTestTask\Infrastructure\ConnectorException;
+use Raketa\BackendTestTask\Contexts\ShoppingCartContext\Infrastructure\Connectors\Exceptions\ConnectorException;
 
 interface CartRepositoryInterface
 {
