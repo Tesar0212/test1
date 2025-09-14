@@ -5,11 +5,12 @@ declare(strict_types = 1);
 namespace Raketa\BackendTestTask\Contexts\ShoppingCartContext\Infrastructure\Connectors\Redis;
 
 use Raketa\BackendTestTask\Contexts\ShoppingCartContext\Infrastructure\Connectors\Exceptions\ConnectorException;
+use Raketa\BackendTestTask\Contexts\ShoppingCartContext\Infrastructure\Connectors\Interfaces\ConnectorInterface;
 use Raketa\BackendTestTask\Domain\Cart;
 use Redis;
 use RedisException;
 
-class Connector
+class Connector implements ConnectorInterface
 {
     private Redis $redis;
 
@@ -33,7 +34,7 @@ class Connector
     /**
      * @throws ConnectorException
      */
-    public function set(string $key, Cart $value): void
+    public function set(string $key, array $value): void
     {
         try {
             $this->redis->setex($key, 24 * 60 * 60, serialize($value));

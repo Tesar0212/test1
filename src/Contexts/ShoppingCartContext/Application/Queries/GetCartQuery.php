@@ -1,10 +1,17 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Raketa\BackendTestTask\Contexts\ShoppingCartContext\Application\Queries;
 
-class GetCartQuery
+readonly class GetCartQuery
 {
-    public function __construct()
+    public function __construct(
+        public string $cartUuid
+    )
     {
+        if ($this->cartUuid === "") {
+            throw new \InvalidArgumentException('Uuid корзины не должен быть пустым');
+        }
     }
 }

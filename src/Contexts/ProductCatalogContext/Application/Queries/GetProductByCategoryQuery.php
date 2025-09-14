@@ -1,10 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Raketa\BackendTestTask\Contexts\ProductCatalogContext\Application\Queries;
 
-class GetProductByCategoryQuery
+readonly class GetProductByCategoryQuery
 {
-    public function __construct()
+    public function __construct(
+        public string $category
+    )
     {
     }
 }

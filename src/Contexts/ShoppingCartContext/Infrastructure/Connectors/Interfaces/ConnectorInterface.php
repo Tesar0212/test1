@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Raketa\BackendTestTask\Contexts\ShoppingCartContext\Infrastructure\Connectors\Interfaces;
 
-use Raketa\BackendTestTask\Contexts\ShoppingCartContext\Domain\Aggregates\Cart;
 use Raketa\BackendTestTask\Infrastructure\ConnectorException;
 
 interface ConnectorInterface
@@ -15,7 +16,7 @@ interface ConnectorInterface
     /**
      * @throws ConnectorException
      */
-    public function set(string $key, Cart $value): void;
+    public function set(string $key, array $value): void;
 
     /**
      * @throws ConnectorException

@@ -10,29 +10,18 @@ use Raketa\BackendTestTask\Contexts\ShoppingCartContext\Domain\Exceptions\Invali
 use Raketa\BackendTestTask\Contexts\ShoppingCartContext\Domain\Exceptions\NegativeQuantityException;
 use Raketa\BackendTestTask\Infrastructure\ConnectorException;
 
-interface CartRepositoryInterface
+interface ProductRepositoryInterface
 {
     /**
-     * @throws InvalidCartItemException
-     * @throws ConnectorException
-     * @throws NegativeQuantityException
-     * @throws InvalidUuidException
-     */
-    public function find(string $uuid): Cart;
-
-    /**
-     * @throws ConnectorException
-     */
-    public function save(Cart $cart): void;
-
-    /**
-     * @param string $uuid
-     * @return array{
+     * @param string[] $uuids
+     * @return array<int, array{
      *     uuid: string,
-     *     item: array,
-     *     paymentMethod: string
-     * }
+     *     name: string,
+     *     thumbnail: string,
+     *     price: float
+     * }>
+     *
      * @throws ConnectorException
      */
-    public function findRaw(string $uuid): array;
+    public function findRawByIds(array $uuids): array;
 }

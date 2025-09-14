@@ -4,12 +4,14 @@ declare(strict_types = 1);
 
 namespace Raketa\BackendTestTask\Contexts\ShoppingCartContext\Domain\Entities;
 
+use Raketa\BackendTestTask\Contexts\ShoppingCartContext\Domain\Exceptions\InvalidUuidException;
 use Raketa\BackendTestTask\Contexts\ShoppingCartContext\Domain\Exceptions\NegativeQuantityException;
 
 final class CartItem
 {
     /**
      * @throws NegativeQuantityException
+     * @throws InvalidUuidException
      */
     public function __construct(
         private readonly string $uuid,
@@ -17,6 +19,22 @@ final class CartItem
         private int $quantity,
     ) {
         $this->validate();
+    }
+
+    /**
+     * @return array{
+     *     uuid: string,
+     *     productUuid: string,
+     *     quantity: int
+     * }
+     */
+    public function toArray(): array
+    {
+        return [
+            'uuid' => $this->uuid,
+            'product_uuid' => $this->productUuid,
+            'quantity' => $this->quantity,
+        ];
     }
 
     public function getUuid(): string
@@ -48,9 +66,18 @@ final class CartItem
 
     /**
      * @throws NegativeQuantityException
+     * @throws InvalidUuidException
      */
     private function validate(): void
     {
+        if ($this->uuid === "") {
+            throw new InvalidUuidException();
+        }
+
+        if ($this->productUuid === "") {
+            throw new InvalidUuidException();
+        }
+
         if ($this->quantity < 0) {
             throw new NegativeQuantityException();
         }
